@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Request IT - Login</title>
 
@@ -31,13 +32,20 @@
     </div>
     <div class="login-box-body">
         <form action="{{ route('login_post') }}" method="post">
+            {{ csrf_field() }}
+            @isset($error)
+                <div class="alert alert-warning alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    Incorrect Username or Password.
+                </div>
+            @endisset
             <div class="form-group has-feedback">
-                <input type="email" class="form-control" placeholder="Email">
-                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                <input type="text" class="form-control" placeholder="Username" name="username">
+                <span class="form-control-feedback"><i class="fa fa-user"></i></span>
             </div>
             <div class="form-group has-feedback">
-                <input type="password" class="form-control" placeholder="Password">
-                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                <input type="password" class="form-control" placeholder="Password" name="password">
+                <span class="form-control-feedback"><i class="fa fa-lock"></i></span>
             </div>
             <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
         </form>
@@ -45,8 +53,6 @@
 </div>
 
 <script src="static/js/jquery.min.js"></script>
-<script src="static/js/jquery-ui.min.js"></script>
-<script>$.widget.bridge('uibutton', $.ui.button);</script>
 <script src="static/js/bootstrap.min.js"></script>
 <script src="static/js/select2.full.min.js"></script>
 <script src="static/js/bootstrap-datetimepicker.min.js"></script>

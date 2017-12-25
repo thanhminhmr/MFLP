@@ -1,0 +1,27 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+class LoginController extends Controller
+{
+    public function index()
+    {
+        if (Auth::check()) {
+            return redirect(route('dashboard'));
+        }
+        return view('login');
+    }
+
+    public function login(Request $request)
+    {
+        if ($request->filled(['username', 'password'])
+            && Auth::attempt($request->only(['username', 'password']))) {
+
+            return redirect(route('dashboard'));
+        }
+        return view('login', ['error' => true]);
+    }
+}
