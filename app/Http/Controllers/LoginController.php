@@ -24,4 +24,12 @@ class LoginController extends Controller
         }
         return view('login', ['error' => true]);
     }
+
+    public function logout()
+    {
+        if (Auth::check()) {
+            Auth::logout();
+        }
+        return redirect(route('login'));
+    }
 }

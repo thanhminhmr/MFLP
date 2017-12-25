@@ -27,15 +27,15 @@ Route::get('/login', 'LoginController@index')->name('login');
  */
 Route::post('/login', 'LoginController@login')->name('login_post');
 
+/**
+ * middleware Authentication
+ */
 Route::middleware('auth')->group(function () {
     /**
      * logout
      * Show Login page
      */
-    Route::get('/logout', function () {
-        // TODO: change this function, below is testing
-        return redirect(route('login'));
-    })->name('logout');
+    Route::get('/logout', 'LoginController@logout')->name('logout');
 
     /**
      * Dashboard

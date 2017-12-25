@@ -49,7 +49,7 @@
                                 <label class="required" for="request_deadline">Deadline</label>
                                 <div class="input-group date">
                                     <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
-                                    <input type="text" class="form-control pull-right" id="request_deadline" name="deadline_at" data-date-format="yyyy-mm-dd hh:ii:ss">
+                                    <input type="text" class="form-control" id="request_deadline" name="deadline_at" data-date-format="yyyy-mm-dd hh:ii:ss" required>
                                 </div>
                             </div>
                         </div>
